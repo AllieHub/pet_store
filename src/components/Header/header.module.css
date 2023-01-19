@@ -1,0 +1,38 @@
+.header_wr {
+    padding: 10px;
+    background-color: mediumpurple;
+    color: white;
+    font-weight: 600;
+}
+
+nav {
+    padding: 15px;
+}
+
+.ul_list {
+    display: flex;
+    list-style: none;
+    gap: 10px;
+}
+
+.ul_list li:nth-child(2) {
+    margin-left: auto;
+}
+
+.ul_list li:last-child {
+    margin-right: 10px;
+}
+
+.ul_list a {
+    text-decoration: none;
+}
+a {
+    color: white;
+}
+.ul_list a:hover {
+    color: rgb(255, 105, 105);
+}
+
+.headerLink {
+    color: lightcoral;
+}

@@ -1,3 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+/* -----------------------------обнуляющие стили------------------------------------------ */
+* {
+    padding: 0%;
+    margin: 0%;
+    border: 0ch;
+  }
+  
+  *, *::before, *::after {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  
+  :focus, :active {
+    outline: none;
+  }
+  
+  a:focus, a:active {
+    outline: none;
+  }
+  
+  nav, footer, header, aside {
+    display: block;
+  }
+  
+  html, body {
+    height: 100%;
+    width: 100%;
+    font-size: 100%;
+    line-height: 1;
+    font-size: 14px;
+    -ms-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    font-family: 'PT Sans', sans-serif;
+  }
+
+/* --------------------------------------------------------------------------------------- */
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -5,9 +43,42 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  letter-spacing: 0.5px;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+.error {
+  color: red;
+}
+button {
+  font-size: 16px;
+  line-height: 1.5;
+  border-radius: 5px;
+  background-color: mediumpurple;
+  color: white;
+  padding: 5px 15px;
+  margin: 15px 15px 30px 15px;
+  cursor: pointer;
+  box-shadow: 5px 5px 10px rgba(147, 112, 216, 0.5);
+  letter-spacing: 0.5px;
+}
+button:hover {
+  background-color: lightcoral;
+  box-shadow: 5px 5px 10px rgba(240, 128, 128, 0.5);
+}
+input {
+  padding: 8px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  background-color: rgba(147, 112, 216, 0.1);
+}
+form {
+  display: flex;
+  flex-direction: column;
+}
+h1 {
+  line-height: 1.5;
 }

@@ -1,0 +1,11 @@
+.signup_wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 15px;
+}
+h1 {
+    margin-bottom: 10px;
+}
