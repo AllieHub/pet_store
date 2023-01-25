@@ -10,6 +10,7 @@ export function Products() {
   const { token, isAuth } = usePetStoreContext()
 
   const navigate = useNavigate()
+
   useEffect(() => {
     if (!isAuth) {
       navigate('/signin')
@@ -36,14 +37,17 @@ export function Products() {
     }),
   })
 
-  if (isLoading) return <Loader />
+  if (isLoading) {
+    return <Loader />
+  }
+
   const { products } = data
 
   return (
     <div>
       <h2>Наши продукты</h2>
       <div className="CardsWr">
-        {products.map((product) => <ProductCard key={product.updated_at} product={product} />)}
+        {products.map(({ _id: id, ...otherProps }) => <ProductCard key={id} {...otherProps} />)}
       </div>
     </div>
   )

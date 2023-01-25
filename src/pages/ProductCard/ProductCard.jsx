@@ -1,28 +1,29 @@
 import ProductCardStyles from './ProductCard.module.css'
 
-export function ProductCard({ product }) {
-  console.log({ product })
-  if (!product) {
-    return null
-  }
+export function ProductCard(props) {
+  const {
+    pictures, name, price, wight,
+  } = props
+
   const addToCartHandler = () => {
     console.log('Продукт добавлен в корзину')
   }
+
   return (
     <div className={ProductCardStyles.Wr}>
       <div>
         <img
-          src={product.pictures}
+          src={pictures}
           alt="Фото товара отсутствует"
           width="180"
         />
       </div>
-      <h3>{product.name}</h3>
+      <h3>{name}</h3>
       <p>
-        {product.price}
+        {price}
           &nbsp;₽
       </p>
-      <p>{product.wight}</p>
+      <p>{wight}</p>
       <button
         type="button"
         onClick={addToCartHandler}

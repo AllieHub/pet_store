@@ -60,7 +60,7 @@ export function Signin() {
           <Field name="email" placeholder="mail@mail.com" type="email" />
           <ErrorMessage component="p" className="error" name="email" />
 
-          <Field name="password" placeholder="Введите пароль" type="text" />
+          <Field name="password" placeholder="Введите пароль" type="password" />
           <ErrorMessage component="p" className="error" name="password" />
 
           <button type="submit">Войти</button>

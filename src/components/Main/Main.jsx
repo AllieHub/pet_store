@@ -10,15 +10,11 @@ export function Main() {
         <br />
         Здесь вы найдете все необходимое для своего любимого питомца
       </h3>
-      <nav>
-        <ul>
-          <li>
-            <Link to="/products">
-              Товары
-            </Link>
-          </li>
-        </ul>
-      </nav>
+
+      <Link className={mainStyles.link} to="/products">
+        На страницу с товарами &#10149;
+      </Link>
+
     </div>
   )
 }

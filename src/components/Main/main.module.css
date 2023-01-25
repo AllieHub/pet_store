@@ -8,3 +8,16 @@
 h3 {
     line-height: 1.5;
 }
+
+
+.link {
+    color: mediumpurple;
+    font-weight: 600;
+    padding: 15px;
+}
+a {
+    text-decoration: none;
+}
+.link:hover {
+    color: lightcoral;
+}
