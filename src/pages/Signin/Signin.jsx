@@ -33,7 +33,7 @@ export function Signin() {
 
   useEffect(() => {
     if (isAuth) {
-      navigate('/')
+      navigate('/products')
     }
   }, [isAuth])
 

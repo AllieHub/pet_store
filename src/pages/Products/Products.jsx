@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import { usePetStoreContext } from '../../contexts/PetStoreContextProvider'
 import { Loader } from '../../Loader/Loader'
 import { ProductCard } from '../ProductCard/ProductCard'
-import './Products.css'
+import productsStyles from './Products.module.css'
 
 export function Products() {
   const { token, isAuth } = usePetStoreContext()
@@ -46,7 +46,7 @@ export function Products() {
   return (
     <div>
       <h2>Наши продукты</h2>
-      <div className="CardsWr">
+      <div className={productsStyles.CardsWr}>
         {products.map(({ _id: id, ...otherProps }) => <ProductCard key={id} {...otherProps} />)}
       </div>
     </div>

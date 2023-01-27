@@ -2,7 +2,7 @@ import ProductCardStyles from './ProductCard.module.css'
 
 export function ProductCard(props) {
   const {
-    pictures, name, price, wight,
+    pictures, name, price, wight, description,
   } = props
 
   const addToCartHandler = () => {
@@ -12,23 +12,28 @@ export function ProductCard(props) {
   return (
     <div className={ProductCardStyles.Wr}>
       <div>
+
         <img
           src={pictures}
           alt="Фото товара отсутствует"
           width="180"
         />
+        <h3>{name}</h3>
+
       </div>
-      <h3>{name}</h3>
-      <p>
-        {price}
+      <div>
+        <p>
+          {price}
           &nbsp;₽
-      </p>
-      <p>{wight}</p>
+        </p>
+        <p>{wight}</p>
+      </div>
+      <p>{description}</p>
       <button
         type="button"
         onClick={addToCartHandler}
       >
-        Добавить в корзину
+        В корзину
       </button>
     </div>
   )
