@@ -1,14 +1,16 @@
 import { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import { usePetStoreContext } from '../../contexts/PetStoreContextProvider'
+import { clearToken, getAuthStatusSelector } from '../../redux/slices/authSlice'
 
 function Logout() {
-  const { setToken, isAuth } = usePetStoreContext()
+  const isAuth = useSelector(getAuthStatusSelector)
 
+  const dispatch = useDispatch()
   const navigate = useNavigate()
   useEffect(() => {
     if (isAuth) {
-      setToken('')
+      dispatch(clearToken())
     }
     navigate('/signin')
   }, [isAuth])

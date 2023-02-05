@@ -3,13 +3,15 @@ import ReactDOM from 'react-dom/client'
 import './index.css'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { Provider } from 'react-redux'
 import App from './App'
 import { Signup } from './pages/Signup/Signup'
 import { Main } from './components/Main/Main'
 import { Signin } from './pages/Signin/Signin'
 import { Products } from './pages/Products/Products'
-import { PetStoreContextWrapper } from './contexts/PetStoreContextProvider'
 import Logout from './pages/Logout/Logout'
+import { store } from './redux/store'
+import { Cart } from './pages/Cart/Cart'
 
 const router = createBrowserRouter([
   {
@@ -21,6 +23,7 @@ const router = createBrowserRouter([
       { path: 'signin', element: <Signin /> },
       { path: 'logout', element: <Logout /> },
       { path: 'products', element: <Products /> },
+      { path: 'cart', element: <Cart /> },
     ],
   },
 ])
@@ -31,9 +34,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
-      <PetStoreContextWrapper>
+      <Provider store={store}>
         <RouterProvider router={router} />
-      </PetStoreContextWrapper>
+      </Provider>
     </QueryClientProvider>
   </React.StrictMode>,
 )

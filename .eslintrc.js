@@ -23,5 +23,6 @@ module.exports = {
     'max-len': ['error', { code: 100 }],
     'linebreak-style': 0,
     indent: ['error', 2],
+    'no-param-reassign': 0,
   },
 }

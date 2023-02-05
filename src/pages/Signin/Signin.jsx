@@ -4,31 +4,25 @@ import {
 import { useMutation } from '@tanstack/react-query'
 import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
 import { signinValidator } from './validatorSignin'
 import signinStyles from './signin.module.css'
-import { usePetStoreContext } from '../../contexts/PetStoreContextProvider'
+import { publicFetch } from '../../utils/publicFetch'
+import { getAuthStatusSelector, setToken } from '../../redux/slices/authSlice'
 
 const initialValues = {
   email: '',
   password: '',
 }
 
-const onRequest = async (values) => {
-  const response = await fetch('https://api.react-learning.ru/signin', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(values),
-  })
-  const objData = await response.json()
-  if (response.status >= 400) {
-    throw new Error(objData.message || 'Неизвестная ошибка')
-  }
-  return objData
-}
-
 export function Signin() {
-  const { mutate } = useMutation({ mutationFn: (values) => onRequest(values) })
-  const { setToken, isAuth } = usePetStoreContext()
+  const { mutate } = useMutation({
+    mutationFn: (body) => publicFetch('signin', { method: 'POST', body }),
+  })
+
+  const isAuth = useSelector(getAuthStatusSelector)
+
+  const dispatch = useDispatch()
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -40,7 +34,7 @@ export function Signin() {
   const onSubmitHandler = (values) => {
     mutate(values, {
       onSuccess: (data) => {
-        setToken(data.token)
+        dispatch(setToken(data.token))
       },
       onError: (error) => {
         alert(error.message)

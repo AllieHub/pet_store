@@ -1,13 +1,30 @@
 import { useQuery } from '@tanstack/react-query'
 import { useEffect } from 'react'
+import { useSelector } from 'react-redux'
+// import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import { usePetStoreContext } from '../../contexts/PetStoreContextProvider'
 import { Loader } from '../../Loader/Loader'
+import { getAuthStatusSelector } from '../../redux/slices/authSlice'
+import { privateFetch } from '../../utils/privateFetch'
 import { ProductCard } from '../ProductCard/ProductCard'
 import productsStyles from './Products.module.css'
 
 export function Products() {
-  const { token, isAuth } = usePetStoreContext()
+  const isAuth = useSelector(getAuthStatusSelector)
+
+  // const search = useSelector(getSearchSelector)
+
+  // const { data: products, isLoading, isError } = useQuery({
+  //   queryKey: getQueryKey(search),
+  //   queryFn: () => fetch(`https://api.react-learning.ru/products?query=${search}`)
+  // .then((res) => res.json()),
+  // })
+
+  // if (isError) return <p>ОШИБКА</p>
+
+  // if (isLoading) {
+  //   return <Loader />
+  // }
 
   const navigate = useNavigate()
 
@@ -17,24 +34,9 @@ export function Products() {
     }
   }, [isAuth])
 
-  const {
-    data, isLoading,
-  } = useQuery({
-    queryKey: ['ProductsFetch', token],
-    queryFn: () => fetch('https://api.react-learning.ru/products', {
-      method: 'GET',
-      headers: {
-        authorization: `Bearer ${token}`,
-      },
-    }).then((response) => {
-      if (response.status >= 400 && response.status < 500) {
-        throw new Error(`Вы не авторизованы. Status: ${response.status}`)
-      }
-      if (response.status >= 500) {
-        throw new Error(`Ошибка на сервере. Status: ${response.status}`)
-      }
-      return response.json()
-    }),
+  const { data, isLoading } = useQuery({
+    queryKey: ['ProductsFetch'],
+    queryFn: () => privateFetch('products'),
   })
 
   if (isLoading) {

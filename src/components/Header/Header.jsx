@@ -1,15 +1,16 @@
 import classNames from 'classnames'
 import { Link, NavLink } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 import petShopLogo from '../images/corgi_s.png'
 import favorite from '../images/icon-favorite.png'
 import shopCart from '../images/icon-shop-cart.png'
-import search from '../images/icon-search.png'
 import profile from '../images/icon-profile.png'
-import { usePetStoreContext } from '../../contexts/PetStoreContextProvider'
 import headerStyles from './header.module.css'
+import { Search } from '../Search/Search'
+import { getAuthStatusSelector } from '../../redux/slices/authSlice'
 
 export function Header() {
-  const { isAuth } = usePetStoreContext()
+  const isAuth = useSelector(getAuthStatusSelector)
 
   const loginButtons = () => {
     if (isAuth) {
@@ -54,24 +55,16 @@ export function Header() {
           </Link>
         </div>
 
-        <div className={headerStyles.search}>
-          <img className={headerStyles.icon} src={search} alt="favorite" />
-          <input
-            className={headerStyles.input}
-            placeholder="Найти"
-            type="search"
-            name=""
-            maxLength="300"
-          />
-        </div>
+        <Search />
 
         <div className={headerStyles.right_container}>
           <Link to="/">
             <img className={headerStyles.icon} src={favorite} alt="favorite" />
           </Link>
 
-          <Link to="/">
+          <Link to="/cart" className={headerStyles.wr_span}>
             <img className={headerStyles.icon} src={shopCart} alt="shop-cart" />
+            <span />
           </Link>
 
           <Link to="/">

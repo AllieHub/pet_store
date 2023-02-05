@@ -3,10 +3,12 @@ import {
 } from 'formik'
 import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+import { useMutation } from '@tanstack/react-query'
 import { signupValidator } from './validatorSignup'
 import signupStyles from './signup.module.css'
-import { useMutateSignup } from './useMutateSignup'
-import { usePetStoreContext } from '../../contexts/PetStoreContextProvider'
+import { getAuthStatusSelector } from '../../redux/slices/authSlice'
+import { publicFetch } from '../../utils/publicFetch'
 
 const initialValues = {
   email: '',
@@ -15,9 +17,13 @@ const initialValues = {
 }
 
 export function Signup() {
+  const isAuth = useSelector(getAuthStatusSelector)
+
+  const { mutate } = useMutation({
+    mutationFn: (body) => publicFetch('signup', { method: 'POST', body }),
+  })
+
   const navigate = useNavigate()
-  const { mutateAsync, error, isError } = useMutateSignup()
-  const { isAuth } = usePetStoreContext()
 
   useEffect(() => {
     if (isAuth) {
@@ -25,17 +31,15 @@ export function Signup() {
     }
   }, [isAuth])
 
-  useEffect(() => {
-    if (isError) {
-      // eslint-disable-next-line no-alert
-      alert(error.message)
-    }
-  }, [isError])
-
-  const submitHandler = async (values) => {
-    const response = await mutateAsync(values)
-    console.log(response)
-    navigate('/signin')
+  const submitHandler = (values) => {
+    mutate(values, {
+      onSuccess: () => {
+        navigate('/signin')
+      },
+      onError: (error) => {
+        alert(error.message)
+      },
+    })
   }
 
   return (

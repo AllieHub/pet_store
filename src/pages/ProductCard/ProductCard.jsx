@@ -2,7 +2,7 @@ import ProductCardStyles from './ProductCard.module.css'
 
 export function ProductCard(props) {
   const {
-    pictures, name, price, wight, description,
+    pictures, name, price, wight, description, stock,
   } = props
 
   const addToCartHandler = () => {
@@ -27,6 +27,10 @@ export function ProductCard(props) {
           &nbsp;₽
         </p>
         <p>{wight}</p>
+        <p>
+          {stock}
+          &nbsp;шт.
+        </p>
       </div>
       <p>{description}</p>
       <button
