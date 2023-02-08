@@ -12,7 +12,8 @@ nav {
 }
 
 .ul_list {
-    display: flex;
+    display: inline-flex;
+    width: 1200px;
     list-style: none;
     gap: 10px;
     flex-direction: row;

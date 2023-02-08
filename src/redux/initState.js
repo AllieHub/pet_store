@@ -5,6 +5,7 @@ export const initState = {
     isAuth: false,
     token: '',
   },
+  cart: [],
   filter: {
     search: '',
   },

@@ -1,12 +1,16 @@
+import { useDispatch } from 'react-redux'
+import { addProductCart } from '../../redux/slices/cartSlice'
 import ProductCardStyles from './ProductCard.module.css'
 
 export function ProductCard(props) {
   const {
-    pictures, name, price, wight, description, stock,
+    pictures, name, price, wight, description, stock, id,
   } = props
 
+  const dispatch = useDispatch()
+
   const addToCartHandler = () => {
-    console.log('Продукт добавлен в корзину')
+    dispatch(addProductCart(id))
   }
 
   return (

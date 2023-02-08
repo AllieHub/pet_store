@@ -49,7 +49,7 @@ export function Products() {
     <div>
       <h2>Наши продукты</h2>
       <div className={productsStyles.CardsWr}>
-        {products.map(({ _id: id, ...otherProps }) => <ProductCard key={id} {...otherProps} />)}
+        {products.map(({ _id: id, ...props }) => <ProductCard key={id} id={id} {...props} />)}
       </div>
     </div>
   )
