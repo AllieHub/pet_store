@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import searchStyles from './search.module.css'
-import searchImage from '../images/icon-search.png'
 import { changeSearchFilter } from '../../redux/slices/filterSlice'
 
 export function Search() {
@@ -16,7 +15,7 @@ export function Search() {
 
   return (
     <div className={searchStyles.wr}>
-      <img className={searchStyles.icon} src={searchImage} alt="search" />
+      <p>Поиск товара</p>
       <input
         className={searchStyles.input}
         placeholder="Найти"

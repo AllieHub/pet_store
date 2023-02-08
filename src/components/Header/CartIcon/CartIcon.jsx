@@ -1,7 +1,9 @@
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import { useSelector } from 'react-redux'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCartShopping } from '@fortawesome/free-solid-svg-icons'
+import classNames from 'classnames'
 import CartIconStyles from './cartIcon.module.css'
-import shopCart from '../../images/icon-shop-cart.png'
 import { getCartSelector } from '../../../redux/slices/cartSlice'
 
 export function CartIcon() {
@@ -9,9 +11,17 @@ export function CartIcon() {
   //   console.log(useSelector(getCartSelector))
 
   return (
-    <Link to="/cart" className={CartIconStyles.wr_span}>
-      <img className={CartIconStyles.icon} src={shopCart} alt="shop-cart" />
+    <NavLink
+      to="/cart"
+      className={
+        ({ isActive }) => classNames(
+          CartIconStyles.wr_span,
+          { [CartIconStyles.headerLink]: isActive },
+        )
+      }
+    >
+      <FontAwesomeIcon className={CartIconStyles.icon} icon={faCartShopping} />
       <span>{cart.length}</span>
-    </Link>
+    </NavLink>
   )
 }

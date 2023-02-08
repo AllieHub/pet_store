@@ -2,6 +2,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
+}
+.wr p {
+    font-size: 12px;
+    padding: 0;
+    margin: 5px;
 }
 
 input {
@@ -17,6 +23,7 @@ input {
     width: 400px;
     border: 0;
     margin: 0;
+    border: 1px solid rgba(0, 0, 0, 0.3);
 }
 
 img {
@@ -26,8 +33,9 @@ img {
 }
 
 .icon {
-    width: 20px;
-    height: 20px;
-    margin-right: 10px;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
     fill: currentColor;
+    margin-right: 5px;
 }

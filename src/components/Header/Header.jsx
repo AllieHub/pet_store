@@ -1,11 +1,10 @@
 import classNames from 'classnames'
-import { Link, NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import { useSelector } from 'react-redux'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faHeart, faUser } from '@fortawesome/free-regular-svg-icons'
 import petShopLogo from '../images/corgi_s.png'
-import favorite from '../images/icon-favorite.png'
-import profile from '../images/icon-profile.png'
 import headerStyles from './header.module.css'
-import { Search } from '../Search/Search'
 import { getAuthStatusSelector } from '../../redux/slices/authSlice'
 import { CartIcon } from './CartIcon/CartIcon'
 
@@ -46,27 +45,25 @@ export function Header() {
     <header className={headerStyles.wr}>
       <nav className={headerStyles.nav}>
         <div className={headerStyles.logo}>
-          <Link
+          <NavLink
             className={({ isActive }) => classNames({ [headerStyles.headerLink]: isActive })}
             to="/"
           >
             <img src={petShopLogo} alt="" />
             <p>На главную</p>
-          </Link>
+          </NavLink>
         </div>
 
-        <Search />
-
         <div className={headerStyles.right_container}>
-          <Link to="/">
-            <img className={headerStyles.icon} src={favorite} alt="favorite" />
-          </Link>
+          <NavLink to="/">
+            <FontAwesomeIcon className={headerStyles.icon} icon={faHeart} />
+          </NavLink>
 
           <CartIcon />
 
-          <Link to="/">
-            <img className={headerStyles.icon} src={profile} alt="shop-cart" />
-          </Link>
+          <NavLink to="/">
+            <FontAwesomeIcon className={headerStyles.icon} icon={faUser} />
+          </NavLink>
 
           {loginButtons()}
         </div>

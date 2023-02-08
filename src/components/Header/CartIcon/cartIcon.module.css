@@ -2,20 +2,25 @@
     position: relative;
 }
 .wr_span span {
-    display: block;
+    display: flex;
     position: absolute;
-    background-color: coral;
+    background-color: darkslateblue;
     border-radius: 50%;
-    height: 10px;
-    width: 10px;
+    height: 15px;
+    width: 15px;
     font-size: 10px;
     z-index: 10;
-    left: 15px;
-    top: 0;
+    left: 20px;
+    top: -3px;
+    align-items: center;
+    justify-content: center;
 }
 .icon {
-    width: 20px;
-    height: 20px;
-    margin-right: 10px;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
     fill: currentColor;
+}
+.headerLink {
+    color: lightcoral;
 }

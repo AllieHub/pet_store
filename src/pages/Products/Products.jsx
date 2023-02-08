@@ -3,6 +3,7 @@ import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 // import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+import { Search } from '../../components/Search/Search'
 import { Loader } from '../../Loader/Loader'
 import { getAuthStatusSelector } from '../../redux/slices/authSlice'
 import { privateFetch } from '../../utils/privateFetch'
@@ -47,6 +48,7 @@ export function Products() {
 
   return (
     <div>
+      <Search />
       <h2>Наши продукты</h2>
       <div className={productsStyles.CardsWr}>
         {products.map(({ _id: id, ...props }) => <ProductCard key={id} id={id} {...props} />)}
