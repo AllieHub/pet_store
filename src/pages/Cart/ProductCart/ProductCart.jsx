@@ -1,5 +1,8 @@
 import { useDispatch } from 'react-redux'
-import { removeProductCart } from '../../../redux/slices/cartSlice'
+import {
+  addProductCart, changeIsChecked, decrementProductCart, removeProductCart,
+}
+  from '../../../redux/slices/cartSlice'
 import productCart from './productCart.module.css'
 
 export function ProductCart(props) {
@@ -12,11 +15,23 @@ export function ProductCart(props) {
   const removeFromCartHandler = () => {
     dispatch(removeProductCart(id))
   }
+  const incrementProductHandler = () => {
+    if (count < stock) {
+      dispatch(addProductCart(id))
+    }
+  }
+  const decrementProductHandler = () => {
+    dispatch(decrementProductCart(id))
+  }
+
+  const checkedHandler = () => {
+    dispatch(changeIsChecked({ id, isChecked: !isChecked }))
+  }
 
   return (
     <div className={productCart.Wr}>
       <div className={productCart.input}>
-        <input defaultChecked={isChecked} type="checkbox" id="scales" name="scales" />
+        <input checked={isChecked} onChange={checkedHandler} type="checkbox" />
         {/* <label htmlFor="scales">Scales</label> */}
       </div>
       <div className={productCart.productWr}>
@@ -53,8 +68,11 @@ export function ProductCart(props) {
 
       <div className={productCart.count_buttons_wr}>
         <div className={productCart.count_buttons}>
-          <button type="button"><i className={productCart.button_minus}>&minus;</i></button>
+          <button type="button" onClick={decrementProductHandler}>
+            <i className={productCart.button_minus}>&minus;</i>
+          </button>
           <input
+            readOnly
             className={productCart.count_input}
             value={count}
             max={stock}
@@ -62,7 +80,9 @@ export function ProductCart(props) {
             type="number"
           />
 
-          <button type="button"><i className={productCart.button_plus}>&#43;</i></button>
+          <button type="button" onClick={incrementProductHandler}>
+            <i className={productCart.button_plus}>&#43;</i>
+          </button>
         </div>
       </div>
 

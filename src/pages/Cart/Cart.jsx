@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import { useQuery } from '@tanstack/react-query'
 import { useSelector } from 'react-redux'
 import { useMemo } from 'react'
@@ -6,12 +7,18 @@ import { getCartSelector } from '../../redux/slices/cartSlice'
 import { privateFetch } from '../../utils/privateFetch'
 import { ProductCart } from './ProductCart/ProductCart'
 import cartStyles from './cart.module.css'
+import { SelectAll } from './SelectAll'
 
 export function Cart() {
   const cart = useSelector(getCartSelector)
 
+  const queryKey = useMemo(() => cart.reduce(
+    (prevState, { id }) => prevState + id,
+    'cart',
+  ), [cart])
+
   const { data, isLoading, isError } = useQuery({
-    queryKey: ['cart', cart],
+    queryKey: [queryKey],
     queryFn: () => Promise.all(cart.map(
       (product) => privateFetch(`products/${product.id}`),
     )),
@@ -30,10 +37,15 @@ export function Cart() {
       totalPrice: 0,
     }
     products?.forEach((product) => {
-      const { count, discount, price } = product
-      info.count += count
-      info.discount += (count * discount)
-      info.totalPrice += (count * price)
+      const {
+        count, discount, price, isChecked,
+      } = product
+
+      if (isChecked) {
+        info.count += count
+        info.discount += (count * discount)
+        info.totalPrice += (count * price)
+      }
     })
     return info
   }
@@ -76,7 +88,7 @@ export function Cart() {
           <div>
             <h2>Корзина</h2>
             <p>
-              Количество товаров:&nbsp;
+              Выбрано товаров:&nbsp;
               {count}
           &nbsp;шт.
             </p>
@@ -84,12 +96,14 @@ export function Cart() {
 
           <div className={cartStyles.tab_content}>
 
-            <div className={cartStyles.products_list}>
-              <div className={cartStyles.choose_all}>
-                <div />
-                <input type="checkbox" id="scales" name="scales" />
-                <p>Выбрать все</p>
-              </div>
+            <div className={cartStyles.tab_wr}>
+              <SelectAll />
+              {/* <div className={cartStyles.choose_all}>
+                <div className={cartStyles.input_check}>
+                  <input id="checkAll" type="checkbox" />
+                  <label htmlFor="checkAll">Выбрать все</label>
+                </div>
+              </div> */}
               <div className={cartStyles.products_items}>
                 {products.map((
                   { _id: id, ...props },
@@ -99,24 +113,21 @@ export function Cart() {
 
             <div className={cartStyles.total_amount_wr}>
               <div className={cartStyles.total_amount}>
-                <div className={cartStyles.total_amount_content}>
-                  <h2>Условия заказа</h2>
-                  <p>
-                    Общая сумма:&nbsp;
-                    <span>
-                      {totalPrice}
+                <h2>Условия заказа</h2>
+                <p>
+                  Общая сумма:&nbsp;
+                  <span>
+                    {totalPrice}
                       &nbsp;₽
-                    </span>
-                  </p>
-                  <p>
-                    Цена с учетом скидок:&nbsp;
-                    <span>
-                      {totalPrice - discount}
+                  </span>
+                </p>
+                <p>
+                  {'Цена с учетом скидок: '}
+                  <span>
+                    {totalPrice - discount}
                     &nbsp;₽
-                    </span>
-                  </p>
-
-                </div>
+                  </span>
+                </p>
                 <button
                   type="button"
                 >
@@ -144,6 +155,5 @@ export function Cart() {
         Избранное
       </button>
     </div>
-
   )
 }

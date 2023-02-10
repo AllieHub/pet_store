@@ -1,1 +1,1 @@
-// export const getQueryKey = (search) => ['GET_ALL_PRODUCTS', search]
+export const getQueryKey = (search) => ['GET_ALL_PRODUCTS', search]

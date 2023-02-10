@@ -8,7 +8,7 @@
     letter-spacing: normal;
     flex-direction: row;
     gap: 10px;
-    margin: 0 0 10px 10px;
+    margin-bottom: 10px;
 }
 .input{
     margin: 15px;
@@ -49,8 +49,10 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    border: 1px solid rgba(71, 61, 139, 0.5);
     border-radius: 5px;
+  }
+  .count_buttons input{
+    padding: 6px;
   }
   .count_buttons button{
     display: flex;
@@ -62,9 +64,8 @@
     margin: 0;
     cursor: pointer;
     letter-spacing: 0;
-    height: 32px;
-    width: 32px;
-
+    height: 25px;
+    width: 25px;
   }
 
   .button_minus {
@@ -76,24 +77,22 @@
   }
 
   .count_input {
-    /* display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 5px;    margin: 0;
-    background-color: rgb(255, 255, 255);
-    border: 1px solid rgba(0, 0, 0, 0.3); */
     display: inline-block;
     text-align: center;
     vertical-align: top;
-    width: 33.33333%;
+    width: 30px;
     line-height: 33px;
     height: 100%;
-    margin: 0 auto;
+    margin: 0 5px;
     border: none;
     background: transparent;
     color: #4e4e4e;
     font-size: 16px;
     outline: none;
+    background-color: rgba(147, 112, 216, 0.1);
+  }
+  .count_input input {
+    padding: 4px;
   }
   
   input::-webkit-inner-spin-button {

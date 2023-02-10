@@ -14,6 +14,7 @@
     max-width: 1200px;
     overflow: hidden;
     width: 100%;
+    padding: 0px 20px;
 }
 /* .headerLink:active {
     color: rgb(43, 226, 52);
@@ -53,7 +54,6 @@ a:hover {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding-right: 20px;
 }
 
 .searchbutton {
