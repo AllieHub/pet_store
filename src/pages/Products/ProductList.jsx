@@ -42,10 +42,17 @@ export function ProductList() {
 
   return (
     <div className={productsStyles.Wr}>
-      <h2>Наши продукты</h2>
-      <div className={productsStyles.CardsWr}>
-        {products.map(({ _id: id, ...props }) => <ProductCard key={id} id={id} {...props} />)}
-      </div>
+      {products[0] && (
+        <div>
+          <h2>Наши товары</h2>
+          <div className={productsStyles.CardsWr}>
+            {products.map(({ _id: id, ...props }) => <ProductCard key={id} id={id} {...props} />)}
+          </div>
+        </div>
+      )}
+      {!products[0] && products && (
+        <h3>По вашему запросу ничего не найдено</h3>
+      )}
     </div>
   )
 }

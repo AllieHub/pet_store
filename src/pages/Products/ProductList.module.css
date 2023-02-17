@@ -9,3 +9,8 @@ h2 {
     padding: 15px;
     color: rgba(71, 61, 139, 0.8);
 }
+h3 {
+    padding: 15px;
+    color: dimgray;
+    font-size: 14px;
+}
