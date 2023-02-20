@@ -8,6 +8,7 @@ import { privateFetch } from '../../utils/privateFetch'
 import { ProductCart } from './ProductCart/ProductCart'
 import cartStyles from './cart.module.css'
 import { SelectAll } from './SelectAll'
+import CorgiCart from '../../components/images/corgi_meditate.png'
 
 export function Cart() {
   const cart = useSelector(getCartSelector)
@@ -142,18 +143,21 @@ export function Cart() {
     )
   }
   return (
-    <div>
+    <div className="cartStyles.cart_empty">
       <h2>Корзина пуста</h2>
-      <button
-        type="button"
-      >
-        Продукты
-      </button>
-      <button
-        type="button"
-      >
-        Избранное
-      </button>
+      <div>
+        <button
+          type="button"
+        >
+          Продукты
+        </button>
+        <button
+          type="button"
+        >
+          Избранное
+        </button>
+      </div>
+      <img src={CorgiCart} alt="" />
     </div>
   )
 }

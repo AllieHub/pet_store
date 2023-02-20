@@ -60,6 +60,15 @@
     padding: 15px;
     /* max-width: 260px;  */
 }
+.cart_empty {
+    display: flex;
+    flex-direction: column;
+}
+
+.cart_empty img {
+    height: 150px;
+    width: 150px;
+}
 /* .total_amount_content {
 } */
 /* .total_amount_content h2, p {
