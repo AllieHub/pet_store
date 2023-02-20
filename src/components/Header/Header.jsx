@@ -55,7 +55,7 @@ export function Header() {
         </div>
 
         <div className={headerStyles.right_container}>
-          <NavLink to="/">
+          <NavLink to="favorite">
             <FontAwesomeIcon className={headerStyles.icon} icon={faHeart} />
           </NavLink>
 

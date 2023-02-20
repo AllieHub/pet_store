@@ -40,19 +40,19 @@ export function ProductList() {
 
   const { products } = data
 
-  return (
-    <div className={productsStyles.Wr}>
-      {products[0] && (
+  if (products.length) {
+    return (
+      <div className={productsStyles.Wr}>
         <div>
           <h2>Наши товары</h2>
           <div className={productsStyles.CardsWr}>
             {products.map(({ _id: id, ...props }) => <ProductCard key={id} id={id} {...props} />)}
           </div>
         </div>
-      )}
-      {!products[0] && products && (
-        <h3>По вашему запросу ничего не найдено</h3>
-      )}
-    </div>
+      </div>
+    )
+  }
+  return (
+    <h3>По вашему запросу ничего не найдено</h3>
   )
 }
