@@ -3,7 +3,8 @@ import {
   addProductCart, changeIsChecked, decrementProductCart, removeProductCart,
 }
   from '../../../redux/slices/cartSlice'
-import productCart from './productCart.module.css'
+// import { FavoritesProductsIcon } from '../../ProductCard/FavoritesProductsIcon'
+import productCartStyles from './productCart.module.css'
 
 export function ProductCart(props) {
   const {
@@ -29,12 +30,11 @@ export function ProductCart(props) {
   }
 
   return (
-    <div className={productCart.Wr}>
-      <div className={productCart.input}>
+    <div className={productCartStyles.Wr}>
+      <div className={productCartStyles.input}>
         <input checked={isChecked} onChange={checkedHandler} type="checkbox" />
-        {/* <label htmlFor="scales">Scales</label> */}
       </div>
-      <div className={productCart.productWr}>
+      <div className={productCartStyles.productWr}>
         <img
           src={pictures}
           alt="Фото товара отсутствует"
@@ -43,7 +43,7 @@ export function ProductCart(props) {
 
       </div>
 
-      <div className={productCart.info}>
+      <div className={productCartStyles.info}>
         <h3>{name}</h3>
         <p>{wight}</p>
         <p>
@@ -51,7 +51,7 @@ export function ProductCart(props) {
           {stock}
           &nbsp;шт.
         </p>
-        <div className={productCart.buttons}>
+        <div className={productCartStyles.buttons}>
           <button
             type="button"
             onClick={removeFromCartHandler}
@@ -63,17 +63,18 @@ export function ProductCart(props) {
           >
             Добавить в избранное
           </button>
+          {/* <FavoritesProductsIcon id={id} /> */}
         </div>
       </div>
 
-      <div className={productCart.count_buttons_wr}>
-        <div className={productCart.count_buttons}>
+      <div className={productCartStyles.count_buttons_wr}>
+        <div className={productCartStyles.count_buttons}>
           <button type="button" onClick={decrementProductHandler}>
-            <i className={productCart.button_minus}>&minus;</i>
+            <i className={productCartStyles.button_minus}>&minus;</i>
           </button>
           <input
             readOnly
-            className={productCart.count_input}
+            className={productCartStyles.count_input}
             value={count}
             max={stock}
             min={1}
@@ -81,12 +82,12 @@ export function ProductCart(props) {
           />
 
           <button type="button" onClick={incrementProductHandler}>
-            <i className={productCart.button_plus}>&#43;</i>
+            <i className={productCartStyles.button_plus}>&#43;</i>
           </button>
         </div>
       </div>
 
-      <div className={productCart.price}>
+      <div className={productCartStyles.price}>
         <p>
           {price}
           &nbsp;₽

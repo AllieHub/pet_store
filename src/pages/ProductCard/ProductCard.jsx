@@ -1,5 +1,6 @@
 import { useDispatch } from 'react-redux'
 import { addProductCart } from '../../redux/slices/cartSlice'
+import { FavoritesProductsIcon } from './FavoritesProductsIcon'
 import ProductCardStyles from './ProductCard.module.css'
 
 export function ProductCard(props) {
@@ -14,17 +15,20 @@ export function ProductCard(props) {
   }
 
   return (
-    <div className={ProductCardStyles.Wr}>
-      <div>
+    <div className={ProductCardStyles.wr}>
+      <div className={ProductCardStyles.wr_icon}>
+        <FavoritesProductsIcon id={id} />
+      </div>
 
+      <div>
         <img
           src={pictures}
           alt="Фото товара отсутствует"
           width="180"
         />
         <h3>{name}</h3>
-
       </div>
+
       <div>
         <p>
           {price}
@@ -35,14 +39,19 @@ export function ProductCard(props) {
           {stock}
           &nbsp;шт.
         </p>
+        <p>{description}</p>
       </div>
-      <p>{description}</p>
-      <button
-        type="button"
-        onClick={addToCartHandler}
-      >
-        В корзину
-      </button>
+
+      <div className={ProductCardStyles.buttons_wr}>
+
+        <button
+          type="button"
+          onClick={addToCartHandler}
+        >
+          Добавить в корзину
+        </button>
+      </div>
+
     </div>
   )
 }

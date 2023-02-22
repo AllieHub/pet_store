@@ -2,11 +2,12 @@ import classNames from 'classnames'
 import { NavLink } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHeart, faUser } from '@fortawesome/free-regular-svg-icons'
+import { faUser } from '@fortawesome/free-regular-svg-icons'
 import petShopLogo from '../images/corgi_s.png'
 import headerStyles from './header.module.css'
 import { getAuthStatusSelector } from '../../redux/slices/authSlice'
 import { CartIcon } from './CartIcon/CartIcon'
+import { FavouritesHeaderIcon } from './FavouritesIcon/FavouritesHeaderIcon'
 
 export function Header() {
   const isAuth = useSelector(getAuthStatusSelector)
@@ -55,9 +56,7 @@ export function Header() {
         </div>
 
         <div className={headerStyles.right_container}>
-          <NavLink to="favorite">
-            <FontAwesomeIcon className={headerStyles.icon} icon={faHeart} />
-          </NavLink>
+          <FavouritesHeaderIcon />
 
           <CartIcon />
 

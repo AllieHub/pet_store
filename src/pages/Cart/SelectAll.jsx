@@ -1,7 +1,9 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import { useMemo } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { changeAllChecked, getCartSelector } from '../../redux/slices/cartSlice'
+import {
+  changeAllChecked, getCartSelector, removeSelectedProductsCart,
+} from '../../redux/slices/cartSlice'
 import cartStyles from './cart.module.css'
 
 export function SelectAll() {
@@ -22,12 +24,17 @@ export function SelectAll() {
     dispatch(changeAllChecked(!isSelectAll))
   }
 
+  const removeSelectedProductHandler = () => {
+    dispatch(removeSelectedProductsCart())
+  }
+
   return (
     <div className={cartStyles.choose_all}>
       <div className={cartStyles.input_check}>
         <input onChange={selectAll} checked={isSelectAll} id="checkAll" type="checkbox" />
         <label htmlFor="checkAll">Выбрать все</label>
       </div>
+      <button onClick={removeSelectedProductHandler} type="button">Удалить выбранное</button>
     </div>
   )
 }

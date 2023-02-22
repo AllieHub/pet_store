@@ -2,6 +2,7 @@
 import { useQuery } from '@tanstack/react-query'
 import { useSelector } from 'react-redux'
 import { useMemo } from 'react'
+import { Link } from 'react-router-dom'
 import { Loader } from '../../Loader/Loader'
 import { getCartSelector } from '../../redux/slices/cartSlice'
 import { privateFetch } from '../../utils/privateFetch'
@@ -146,16 +147,13 @@ export function Cart() {
     <div className="cartStyles.cart_empty">
       <h2>Корзина пуста</h2>
       <div>
-        <button
-          type="button"
-        >
-          Продукты
-        </button>
-        <button
-          type="button"
-        >
-          Избранное
-        </button>
+        <Link to="/products">
+          <button type="button">Продукты</button>
+        </Link>
+
+        <Link to="/favorites">
+          <button type="button">Избранное</button>
+        </Link>
       </div>
       <img src={CorgiCart} alt="" />
     </div>
