@@ -24,6 +24,12 @@
     color: lightcoral;
     margin: 10px 10px 0px;
 }
+.icon:hover {
+    color: rgb(234, 97, 97);
+}
+.icon:active {
+    color: rgb(234, 97, 97);
+}
 
 h2 {
     padding: 15px;

@@ -44,6 +44,12 @@ button {
     color: lightcoral;
     margin: 10px 10px 0px;
 }
+.icon:hover {
+    color: rgb(234, 97, 97);
+}
+.icon:active {
+    color: rgb(234, 97, 97);
+}
 .wr_icon {
     display: flex;
     justify-content: flex-end;

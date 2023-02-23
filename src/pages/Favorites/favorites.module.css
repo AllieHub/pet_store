@@ -9,3 +9,10 @@
 .wr {
     margin-top: 15px;
 }
+.error {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 25px;
+    font-size: 25px;
+}

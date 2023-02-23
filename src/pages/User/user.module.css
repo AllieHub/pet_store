@@ -1,0 +1,34 @@
+.wr {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 30px;
+    gap: 30px;
+    align-items: center;
+}
+.wr_info {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+}
+.error {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+    font-size: 25px;
+}
+.img img {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+}
+.info {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+}
+.info p {
+    margin-bottom: 8px;
+}

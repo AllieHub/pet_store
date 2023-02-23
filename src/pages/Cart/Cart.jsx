@@ -19,7 +19,9 @@ export function Cart() {
     'cart',
   ), [cart])
 
-  const { data, isLoading, isError } = useQuery({
+  const {
+    data, isLoading, isError, error,
+  } = useQuery({
     queryKey: [queryKey],
     queryFn: () => Promise.all(cart.map(
       (product) => privateFetch(`products/${product.id}`),
@@ -80,7 +82,7 @@ export function Cart() {
   }
 
   if (isError) {
-    return <div>Error</div>
+    return <div className={cartStyles.error}>{error.message}</div>
   }
 
   if (cart.length) {

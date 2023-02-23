@@ -63,7 +63,6 @@ export function ProductCart(props) {
           >
             Добавить в избранное
           </button>
-          {/* <FavoritesProductsIcon id={id} /> */}
         </div>
       </div>
 

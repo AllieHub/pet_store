@@ -16,7 +16,9 @@ export function Favorites() {
     'favorites',
   ), [favorites])
 
-  const { data: favoriteProducts, isLoading, isError } = useQuery({
+  const {
+    data: favoriteProducts, isLoading, isError, error,
+  } = useQuery({
     queryKey: [queryKey],
     queryFn: () => Promise.all(favorites.map(
       (productId) => privateFetch(`products/${productId}`),
@@ -28,7 +30,7 @@ export function Favorites() {
   }
 
   if (isError) {
-    return <div>Error</div>
+    return <div className={favoritesStyles.error}>{error.message}</div>
   }
   if (favorites.length) {
     return (

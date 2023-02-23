@@ -60,7 +60,7 @@ export function Header() {
 
           <CartIcon />
 
-          <NavLink to="/">
+          <NavLink to="user">
             <FontAwesomeIcon className={headerStyles.icon} icon={faUser} />
           </NavLink>
 
