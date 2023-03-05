@@ -56,6 +56,7 @@ export function Header() {
         </div>
 
         <div className={headerStyles.right_container}>
+
           <FavouritesHeaderIcon />
 
           <CartIcon />

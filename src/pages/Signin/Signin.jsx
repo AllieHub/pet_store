@@ -8,7 +8,9 @@ import { useDispatch, useSelector } from 'react-redux'
 import { signinValidator } from './validatorSignin'
 import signinStyles from './signin.module.css'
 import { publicFetch } from '../../utils/publicFetch'
-import { getAuthStatusSelector, setGroup, setToken } from '../../redux/slices/authSlice'
+import {
+  getAuthStatusSelector, setGroup, setToken, setUserId,
+} from '../../redux/slices/authSlice'
 
 const initialValues = {
   email: '',
@@ -36,6 +38,8 @@ export function Signin() {
       onSuccess: (data) => {
         dispatch(setToken(data.token))
         dispatch(setGroup(data.data.group))
+        // eslint-disable-next-line no-underscore-dangle
+        dispatch(setUserId(data.data._id))
       },
       onError: (error) => {
         alert(error.message)

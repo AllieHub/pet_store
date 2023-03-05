@@ -4,6 +4,7 @@ const initialState = {
   isAuth: false,
   token: '',
   group: '',
+  userId: '',
 }
 
 const authSlice = createSlice({
@@ -17,13 +18,18 @@ const authSlice = createSlice({
     setGroup(state, action) {
       state.group = action.payload
     },
+    setUserId(state, action) {
+      state.userId = action.payload
+    },
     clearToken() {
       return initialState
     },
   },
 })
 
-export const { setToken, setGroup, clearToken } = authSlice.actions
+export const {
+  setToken, setGroup, setUserId, clearToken,
+} = authSlice.actions
 
 // export const getTokenSelector = (state) => state.auth.token
 

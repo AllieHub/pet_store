@@ -9,7 +9,7 @@ import favouritesStyles from './favouritesIcon.module.css'
 
 export function FavouritesHeaderIcon() {
   const favorites = useSelector(getFavoritesSelector)
-  console.log(favorites)
+
   if (favorites.length) {
     return (
       <NavLink

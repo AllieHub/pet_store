@@ -1,4 +1,5 @@
 import { useDispatch } from 'react-redux'
+import { Link } from 'react-router-dom'
 import { addProductCart } from '../../redux/slices/cartSlice'
 import { FavoritesProductsIcon } from './FavoritesProductsIcon'
 import ProductCardStyles from './ProductCard.module.css'
@@ -12,6 +13,10 @@ export function ProductCard(props) {
 
   const addToCartHandler = () => {
     dispatch(addProductCart(id))
+  }
+
+  const DetailPageProductHandler = () => {
+    console.log({ id })
   }
 
   return (
@@ -50,6 +55,14 @@ export function ProductCard(props) {
         >
           Добавить в корзину
         </button>
+
+        <Link
+          className={ProductCardStyles.detail_button}
+          to={id}
+          onClick={DetailPageProductHandler}
+        >
+          <p>Подробнее...</p>
+        </Link>
       </div>
 
     </div>

@@ -14,6 +14,8 @@ import { store } from './redux/store'
 import { Cart } from './pages/Cart/Cart'
 import { Favorites } from './pages/Favorites/Favorites'
 import { User } from './pages/User/User'
+import { AddNewProduct } from './pages/AddProduct/AddNewProduct'
+import { DetailPageProduct } from './pages/DetailPageProduct/DetailPageProduct'
 
 const router = createBrowserRouter([
   {
@@ -28,6 +30,8 @@ const router = createBrowserRouter([
       { path: 'cart', element: <Cart /> },
       { path: 'favorites', element: <Favorites /> },
       { path: 'user', element: <User /> },
+      { path: 'addnewproduct', element: <AddNewProduct /> },
+      { path: 'products/:id', element: <DetailPageProduct /> },
     ],
   },
 ])

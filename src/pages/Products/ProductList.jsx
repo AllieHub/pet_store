@@ -1,13 +1,13 @@
 import { useQuery } from '@tanstack/react-query'
 import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { Loader } from '../../Loader/Loader'
 import { getAuthStatusSelector } from '../../redux/slices/authSlice'
 import { getSearchSelector } from '../../redux/slices/filterSlice'
 import { privateFetch } from '../../utils/privateFetch'
 import { ProductCard } from '../ProductCard/ProductCard'
-import productsStyles from './ProductList.module.css'
+import productsStyles from './productList.module.css'
 import { getQueryKey } from './utils'
 
 export function ProductList() {
@@ -42,10 +42,16 @@ export function ProductList() {
 
   if (products.length) {
     return (
-      <div className={productsStyles.Wr}>
+      <div className={productsStyles.wr}>
         <div>
+          <button className={productsStyles.wr_button} type="button">
+            <Link to="/addnewproduct">
+              Добавить свой товар
+            </Link>
+          </button>
+
           <h2>Наши товары</h2>
-          <div className={productsStyles.CardsWr}>
+          <div className={productsStyles.wr_cards}>
             {products.map(({ _id: id, ...props }) => <ProductCard key={id} id={id} {...props} />)}
           </div>
         </div>

@@ -1,0 +1,29 @@
+.wr {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form_addProduct {
+    gap: 10px;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.field p {
+    font-size: 12px;
+}
+
+.field_available{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.field_available input {
+    margin: 0;
+}

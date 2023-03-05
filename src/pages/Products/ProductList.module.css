@@ -1,4 +1,13 @@
-.CardsWr {
+.wr {
+    display: flex;
+    flex-direction: column;
+}
+
+.wr_button a:hover {
+    color: white;
+} 
+
+.wr_cards {
     display: grid;
     grid-template-columns: repeat(3, 300px);
     grid-gap: 15px;

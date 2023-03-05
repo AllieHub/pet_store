@@ -18,6 +18,7 @@ h2 {
     padding: 15px;
     color: rgba(71, 61, 139, 0.8);
 }
+
 h3 {
     padding: 15px;
     color: dimgray;
@@ -28,11 +29,12 @@ p {
     font-size: 18px;
 }
 
-button {
+.buttons_wr button{
     letter-spacing: 1px;
     align-content: flex-end;
     font-weight: 600;
 }
+
 .icon {
     position: relative;
     /* left: 120px; */
@@ -44,13 +46,27 @@ button {
     color: lightcoral;
     margin: 10px 10px 0px;
 }
+
 .icon:hover {
     color: rgb(234, 97, 97);
 }
+
 .icon:active {
     color: rgb(234, 97, 97);
 }
+
 .wr_icon {
     display: flex;
     justify-content: flex-end;
+}
+
+.detail_button {
+    color:lightcoral;
+    font-size: 12px;
+    margin: 10px;
+}
+
+.detail_button p {
+    font-size: 14px;
+    font-weight: 900;
 }
