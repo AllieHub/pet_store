@@ -1,12 +1,14 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { faCircleInfo } from '@fortawesome/free-solid-svg-icons'
 import { addProductCart } from '../../redux/slices/cartSlice'
 import { FavoritesProductsIcon } from './FavoritesProductsIcon'
 import ProductCardStyles from './ProductCard.module.css'
 
 export function ProductCard(props) {
   const {
-    pictures, name, price, wight, description, stock, id,
+    pictures, name, price, wight, stock, id,
   } = props
 
   const dispatch = useDispatch()
@@ -15,17 +17,13 @@ export function ProductCard(props) {
     dispatch(addProductCart(id))
   }
 
-  const DetailPageProductHandler = () => {
-    console.log({ id })
-  }
-
   return (
     <div className={ProductCardStyles.wr}>
       <div className={ProductCardStyles.wr_icon}>
         <FavoritesProductsIcon id={id} />
       </div>
 
-      <div>
+      <div className={ProductCardStyles.h3}>
         <img
           src={pictures}
           alt="Фото товара отсутствует"
@@ -44,7 +42,6 @@ export function ProductCard(props) {
           {stock}
           &nbsp;шт.
         </p>
-        <p>{description}</p>
       </div>
 
       <div className={ProductCardStyles.buttons_wr}>
@@ -59,10 +56,11 @@ export function ProductCard(props) {
         <Link
           className={ProductCardStyles.detail_button}
           to={id}
-          onClick={DetailPageProductHandler}
         >
+          <FontAwesomeIcon className={ProductCardStyles.icon} icon={faCircleInfo} />
           <p>Подробнее...</p>
         </Link>
+
       </div>
 
     </div>

@@ -1,6 +1,8 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useDispatch } from 'react-redux'
-import { faHeartCircleMinus } from '@fortawesome/free-solid-svg-icons'
+import { faHeartCircleMinus, faCircleInfo } from '@fortawesome/free-solid-svg-icons'
+import { Link } from 'react-router-dom'
+import classNames from 'classnames'
 import { changeStatusFavourites } from '../../../redux/slices/favoritesSlice'
 import favoriteStyles from './favoriteCard.module.css'
 import { addProductCart } from '../../../redux/slices/cartSlice'
@@ -18,14 +20,31 @@ export function FavoriteCard(props) {
   const addToCartHandler = () => {
     dispatch(addProductCart(id))
   }
+
   return (
     <div className={favoriteStyles.wr_card}>
-      <div className={favoriteStyles.wr_icon}>
-        <FontAwesomeIcon
-          onClick={changeStatusFavouritesHandler}
-          className={favoriteStyles.icon}
-          icon={faHeartCircleMinus}
-        />
+
+      <div className={favoriteStyles.wr_icons}>
+
+        <div className={classNames(favoriteStyles.wr_icon, favoriteStyles.icon_info)}>
+          <Link
+            className={favoriteStyles.detail_button}
+            to={`/products/${id}`}
+          >
+            <FontAwesomeIcon className={favoriteStyles.icon} icon={faCircleInfo} />
+          </Link>
+          <span className={favoriteStyles.clue}>Подробнее о товаре</span>
+        </div>
+
+        <div className={classNames(favoriteStyles.wr_icon, favoriteStyles.icon_heart)}>
+          <FontAwesomeIcon
+            onClick={changeStatusFavouritesHandler}
+            className={favoriteStyles.icon}
+            icon={faHeartCircleMinus}
+          />
+          <span className={favoriteStyles.clue}>Удалить из избранного</span>
+        </div>
+
       </div>
 
       <div className={favoriteStyles.productWr}>

@@ -2,7 +2,7 @@ import { faHeart } from '@fortawesome/free-regular-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useSelector } from 'react-redux'
 import { NavLink } from 'react-router-dom'
-import { faHeart as faHearSolid } from '@fortawesome/free-solid-svg-icons'
+import { faHeart as faHeartSolid } from '@fortawesome/free-solid-svg-icons'
 import classNames from 'classnames'
 import { getFavoritesSelector } from '../../../redux/slices/favoritesSlice'
 import favouritesStyles from './favouritesIcon.module.css'
@@ -21,7 +21,7 @@ export function FavouritesHeaderIcon() {
           )
         }
       >
-        <FontAwesomeIcon className={favouritesStyles.icon} icon={faHearSolid} />
+        <FontAwesomeIcon className={favouritesStyles.icon} icon={faHeartSolid} />
       </NavLink>
     )
   }

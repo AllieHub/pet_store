@@ -46,11 +46,17 @@ export function AddNewProduct() {
         onSubmit={mutate}
       >
         <Form className={addStyles.form_addProduct}>
-          <Field name="pictures" placeholder="Ссылка на фото товара" type="text" />
-          <ErrorMessage component="p" className="error" name="pictures" />
+          <div className={addStyles.field}>
+            <p>Ссылка на фото товара</p>
+            <Field name="pictures" placeholder="формат .jpg /.jpeg" type="text" />
+            <ErrorMessage component="p" className="error" name="pictures" />
+          </div>
 
-          <Field name="name" placeholder="Название товара" type="text" />
-          <ErrorMessage component="p" className="error" name="name" />
+          <div className={addStyles.field}>
+            <p>Название товара</p>
+            <Field name="name" placeholder="Название товара" type="text" />
+            <ErrorMessage component="p" className="error" name="name" />
+          </div>
 
           <div className={addStyles.field}>
             <p>Цена товара</p>
@@ -64,11 +70,17 @@ export function AddNewProduct() {
             <ErrorMessage component="p" className="error" name="discount" />
           </div>
 
-          <Field name="wight" placeholder="Вес товара/Сколько штук" type="text" />
-          <ErrorMessage component="p" className="error" name="wight" />
+          <div className={addStyles.field}>
+            <p>Вес товара/Сколько штук</p>
+            <Field name="wight" placeholder="Вес товара/Сколько штук" type="text" />
+            <ErrorMessage component="p" className="error" name="wight" />
+          </div>
 
-          <Field name="description" placeholder="Описание товара" type="text" />
-          <ErrorMessage component="p" className="error" name="description" />
+          <div className={addStyles.field}>
+            <p>Описание товара</p>
+            <Field name="description" placeholder="Описание товара" type="text" />
+            <ErrorMessage component="p" className="error" name="description" />
+          </div>
 
           <div className={addStyles.field}>
             <p>Количество товара в наличии</p>

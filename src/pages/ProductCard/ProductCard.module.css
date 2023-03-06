@@ -19,17 +19,34 @@ h2 {
     color: rgba(71, 61, 139, 0.8);
 }
 
-h3 {
+.h3 h3 {
     padding: 15px;
-    color: dimgray;
-    font-size: 14px;
+    font-size: 18px;
+    color: darkslateblue;
 }
 
 p {
     font-size: 18px;
 }
 
-.buttons_wr button{
+.detail_button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.detail_button svg {
+    margin: 0px 10px 0;
+    width: 20px;
+    height: 20px;
+}
+
+.buttons_wr a {
+    margin: 0px 0px 20px;
+}
+
+.buttons_wr button {
     letter-spacing: 1px;
     align-content: flex-end;
     font-weight: 600;
@@ -63,7 +80,7 @@ p {
 .detail_button {
     color:lightcoral;
     font-size: 12px;
-    margin: 10px;
+    margin-bottom: 20px;
 }
 
 .detail_button p {
