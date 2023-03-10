@@ -35,6 +35,8 @@ export const {
 
 export const getAuthStatusSelector = (state) => state.auth.isAuth
 
+export const getUserIdSelector = (state) => state.auth.userId
+
 export const getGroupSelector = (state) => state.auth.group
 
 export const authReducer = authSlice.reducer

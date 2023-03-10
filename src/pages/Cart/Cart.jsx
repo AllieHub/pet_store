@@ -45,14 +45,17 @@ export function Cart() {
         count, discount, price, isChecked,
       } = product
 
+      const sale = (price / 100) * discount
+
       if (isChecked) {
         info.count += count
-        info.discount += (count * discount)
+        info.discount += (count * sale)
         info.totalPrice += (count * price)
       }
     })
     return info
   }
+
   const { count, discount, totalPrice } = useMemo(getInfo, [products])
   // const getCount = () => {
   //   let count = 0

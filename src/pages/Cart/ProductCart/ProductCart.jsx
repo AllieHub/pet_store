@@ -13,7 +13,7 @@ import { FavoritesProductsIcon } from '../../ProductCard/FavoritesProductsIcon'
 
 export function ProductCart(props) {
   const {
-    pictures, name, price, wight, id, count, stock, isChecked,
+    pictures, name, price, wight, id, count, stock, discount, isChecked,
   } = props
 
   const [isDeleteModalOpen, setisDeleteModalOpen] = useState(false)
@@ -43,6 +43,8 @@ export function ProductCart(props) {
   const checkedHandler = () => {
     dispatch(changeIsChecked({ id, isChecked: !isChecked }))
   }
+
+  const sale = String((price - (price / 100) * discount) * count).replace('.', ',')
 
   return (
     <>
@@ -85,6 +87,7 @@ export function ProductCart(props) {
           &nbsp;шт.
           </p>
           <div className={productCartStyles.buttons}>
+
             <button
               className={classNames(productCartStyles.icons_button, productCartStyles.icon_trash)}
               type="button"
@@ -93,6 +96,7 @@ export function ProductCart(props) {
               <FontAwesomeIcon className={productCartStyles.icon} icon={faTrashCan} />
               <span className={productCartStyles.clue}>Удалить товар из корзины</span>
             </button>
+
             <button
               className={classNames(productCartStyles.icons_button, productCartStyles.icon_heart)}
               type="button"
@@ -100,6 +104,7 @@ export function ProductCart(props) {
               <FavoritesProductsIcon id={id} />
               <span className={productCartStyles.clue}>Добавить в избранное</span>
             </button>
+
           </div>
         </div>
 
@@ -123,12 +128,22 @@ export function ProductCart(props) {
           </div>
         </div>
 
-        <div className={productCartStyles.price}>
+        <div className={productCartStyles.discount}>
+          {sale}
+          &nbsp;₽
+          {!!discount && (
+            <span className={productCartStyles.wr_price}>
+              {price}
+            </span>
+          )}
+        </div>
+
+        {/* <div className={productCartStyles.price}>
           <p>
             {price}
           &nbsp;₽
           </p>
-        </div>
+        </div> */}
 
       </div>
     </>

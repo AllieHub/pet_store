@@ -173,3 +173,17 @@ input::-webkit-inner-spin-button {
     justify-content: space-between;
     max-width: 450px;
 }
+
+.discount {
+  color: lightcoral;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.wr_price {
+  color: #8c8c8c;
+  font-size: 12px;
+  font-weight: 400;
+  margin-left: 2px;
+  text-decoration: line-through;
+}

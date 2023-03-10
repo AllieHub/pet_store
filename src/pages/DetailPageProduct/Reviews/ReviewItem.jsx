@@ -10,13 +10,13 @@ export function ReviewItem(props) {
   } = props
   // console.log({ props })
 
-  const raitingStars = () => {
-    const rows = []
+  const ratingStars = () => {
+    const stars = []
     // eslint-disable-next-line no-plusplus
     for (let i = 0; i < rating; i++) {
-      rows.push(<FontAwesomeIcon className={reviewsStyles.icon} icon={faStarSolid} />)
+      stars.push(<FontAwesomeIcon className={reviewsStyles.icon} icon={faStarSolid} />)
     }
-    return rows
+    return stars
   }
 
   return (
@@ -31,7 +31,7 @@ export function ReviewItem(props) {
 
         <div className={reviewsStyles.raiting}>
           <h3>Рейтинг:&nbsp;</h3>
-          {raitingStars()}
+          {ratingStars()}
         </div>
 
       </div>

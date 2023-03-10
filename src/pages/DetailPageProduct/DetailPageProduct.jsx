@@ -9,6 +9,7 @@ import { FavoritesProductsIcon } from '../ProductCard/FavoritesProductsIcon'
 import delailStyles from './detailPageProduct.module.css'
 import { Reviews } from './Reviews/Reviews'
 import { addProductCart } from '../../redux/slices/cartSlice'
+import { EditButton } from './EditButton'
 
 export function DetailPageProduct() {
   const { id } = useParams()
@@ -46,10 +47,12 @@ export function DetailPageProduct() {
     return <div className={delailStyles.error}>{error.message}</div>
   }
 
-  console.log({ data })
+  // console.log({ data })
   const {
     pictures, name, price, wight, stock, description, discount,
   } = data
+
+  const sale = String(price - (price / 100) * discount).replace('.', ',')
 
   return (
     <div className={delailStyles.wr}>
@@ -65,7 +68,7 @@ export function DetailPageProduct() {
           <h3>{name}</h3>
 
           <div className={delailStyles.discount}>
-            {price - discount}
+            {sale}
           &nbsp;₽
             {!!discount && (
               <span className={delailStyles.wr_price}>
@@ -98,9 +101,12 @@ export function DetailPageProduct() {
         >
           Добавить в корзину
         </button>
+
+        <EditButton {...data} />
+
       </div>
 
-      <Reviews />
+      <Reviews productId={id} />
 
     </div>
   )
