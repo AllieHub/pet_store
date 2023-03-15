@@ -16,10 +16,6 @@ export function DetailPageProduct() {
 
   const dispatch = useDispatch()
 
-  const addToCartHandler = () => {
-    dispatch(addProductCart(id))
-  }
-
   const isAuth = useSelector(getAuthStatusSelector)
 
   const navigate = useNavigate()
@@ -51,6 +47,10 @@ export function DetailPageProduct() {
   const {
     pictures, name, price, wight, stock, description, discount,
   } = data
+
+  const addToCartHandler = () => {
+    dispatch(addProductCart({ id, price, discount }))
+  }
 
   const sale = String(price - (price / 100) * discount).replace('.', ',')
 

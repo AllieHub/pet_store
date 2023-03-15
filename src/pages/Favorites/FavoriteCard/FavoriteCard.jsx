@@ -3,22 +3,45 @@ import { useDispatch } from 'react-redux'
 import { faHeartCircleMinus, faCircleInfo } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom'
 import classNames from 'classnames'
+import { useQuery } from '@tanstack/react-query'
 import { changeStatusFavourites } from '../../../redux/slices/favoritesSlice'
 import favoriteStyles from './favoriteCard.module.css'
 import { addProductCart } from '../../../redux/slices/cartSlice'
+import { privateFetch } from '../../../utils/privateFetch'
 
-export function FavoriteCard(props) {
-  const {
-    pictures, name, price, wight, stock, id,
-  } = props
-
+export function FavoriteCard({ productId }) {
   const dispatch = useDispatch()
+
   const changeStatusFavouritesHandler = () => {
-    dispatch(changeStatusFavourites(id))
+    dispatch(changeStatusFavourites(productId))
   }
 
+  const {
+    data, isLoading, isError, error,
+  } = useQuery({
+    queryKey: [productId],
+    queryFn: () => privateFetch(`products/${productId}`),
+    onError: (err) => {
+      if (err.status === 404) {
+        changeStatusFavouritesHandler()
+      }
+    },
+  })
+
+  if (isLoading) {
+    return <div>Идет загрузка</div>
+  }
+
+  if (isError) {
+    return <div className={favoriteStyles.error}>{error.message}</div>
+  }
+
+  const {
+    pictures, name, price, wight, stock, discount,
+  } = data
+
   const addToCartHandler = () => {
-    dispatch(addProductCart(id))
+    dispatch(addProductCart({ id: productId, price, discount }))
   }
 
   return (
@@ -29,7 +52,7 @@ export function FavoriteCard(props) {
         <div className={classNames(favoriteStyles.wr_icon, favoriteStyles.icon_info)}>
           <Link
             className={favoriteStyles.detail_button}
-            to={`/products/${id}`}
+            to={`/products/${productId}`}
           >
             <FontAwesomeIcon className={favoriteStyles.icon} icon={faCircleInfo} />
           </Link>

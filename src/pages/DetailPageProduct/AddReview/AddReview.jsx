@@ -1,12 +1,12 @@
 /* eslint-disable no-underscore-dangle */
 import { useMutation } from '@tanstack/react-query'
 import {
-  ErrorMessage, Field, Form, Formik,
+  ErrorMessage, Form, Formik,
 } from 'formik'
 import { useState } from 'react'
 import { privateFetch } from '../../../utils/privateFetch'
-// import { privateFetch } from '../../../utils/privateFetch'
 import addReviewStyles from './addReview.module.css'
+import { FormikControl } from './FormikFiles/FormikControl'
 import { Rating } from './Rating'
 import { validatorAddReview } from './validatorAddReview'
 
@@ -51,9 +51,12 @@ export function AddReview({ productId, refetch }) {
           </div>
 
           <div className={addReviewStyles.field}>
-            <p>Текст отзыва:</p>
             {/* <textarea  name="text" placeholder="Текст вашего отзыва здесь..."></textarea> */}
-            <Field name="text" placeholder="Текст вашего отзыва здесь..." type="text" rows="6" />
+            <FormikControl
+              control="textarea"
+              name="text"
+              placeholder="Текст вашего отзыва здесь..."
+            />
             <ErrorMessage component="p" className="error" name="text" />
           </div>
           <div className={addReviewStyles.wr_buttons}>

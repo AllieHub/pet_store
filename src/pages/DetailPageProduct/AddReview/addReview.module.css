@@ -11,8 +11,14 @@
     flex-direction: column;
 }
 
-.field input {
-    width: 600px;
+.field textarea {
+    width: 400px;
+    height: 100px;
+    padding: 10px;
+    background-color: rgba(147, 112, 216, 0.1);
+    border: solid 1px mediumpurple;
+    border-radius: 5px;
+    box-shadow: 5px 5px 10px rgba(147, 112, 216, 0.1);
 }
 
 .field p {

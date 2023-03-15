@@ -3,19 +3,27 @@ import { useDispatch } from 'react-redux'
 import { faTrashCan } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import classNames from 'classnames'
+import { useQuery } from '@tanstack/react-query'
 import { Modal } from '../../../components/Modal/Modal'
 import {
-  addProductCart, changeIsChecked, decrementProductCart, removeProductCart,
+  addProductCart,
+  changeIsChecked,
+  changePriceDicount,
+  decrementProductCart,
+  removeProductCart,
+  removeSelectedProductsCart,
 }
   from '../../../redux/slices/cartSlice'
 import productCartStyles from './productCart.module.css'
 import { FavoritesProductsIcon } from '../../ProductCard/FavoritesProductsIcon'
+import { privateFetch } from '../../../utils/privateFetch'
 
 export function ProductCart(props) {
   const {
-    pictures, name, price, wight, id, count, stock, discount, isChecked,
+    productId, count, isChecked, price, discount,
   } = props
 
+  const dispatch = useDispatch()
   const [isDeleteModalOpen, setisDeleteModalOpen] = useState(false)
 
   const closeDeleteModalHandler = () => {
@@ -26,22 +34,51 @@ export function ProductCart(props) {
     setisDeleteModalOpen(true)
   }
 
-  const dispatch = useDispatch()
-
   const removeFromCartHandler = () => {
-    dispatch(removeProductCart(id))
+    dispatch(removeProductCart(productId))
   }
-  const incrementProductHandler = () => {
-    if (count < stock) {
-      dispatch(addProductCart(id))
-    }
-  }
+
   const decrementProductHandler = () => {
-    dispatch(decrementProductCart(id))
+    dispatch(decrementProductCart(productId))
   }
 
   const checkedHandler = () => {
-    dispatch(changeIsChecked({ id, isChecked: !isChecked }))
+    dispatch(changeIsChecked({ id: productId, isChecked: !isChecked }))
+  }
+
+  const {
+    data, isLoading, isError, error,
+  } = useQuery({
+    queryKey: [productId],
+    queryFn: () => privateFetch(`products/${productId}`),
+    onSuccess: ({ price: priceData, discount: discountData }) => {
+      if (price !== priceData || discount !== discountData) {
+        dispatch(changePriceDicount({ id: productId, price: priceData, discount: discountData }))
+      }
+    },
+    onError: (err) => {
+      if (err.status === 404) {
+        dispatch(removeSelectedProductsCart(productId))
+      }
+    },
+  })
+
+  if (isLoading) {
+    return <div>Идет загрузка</div>
+  }
+
+  if (isError) {
+    return <div className={productCartStyles.error}>{error.message}</div>
+  }
+
+  const {
+    pictures, name, wight, stock,
+  } = data
+
+  const incrementProductHandler = () => {
+    if (count < stock) {
+      dispatch(addProductCart({ id: productId, price, discount }))
+    }
   }
 
   const sale = String((price - (price / 100) * discount) * count).replace('.', ',')
@@ -101,7 +138,7 @@ export function ProductCart(props) {
               className={classNames(productCartStyles.icons_button, productCartStyles.icon_heart)}
               type="button"
             >
-              <FavoritesProductsIcon id={id} />
+              <FavoritesProductsIcon id={productId} />
               <span className={productCartStyles.clue}>Добавить в избранное</span>
             </button>
 

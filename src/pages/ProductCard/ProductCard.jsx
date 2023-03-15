@@ -8,13 +8,13 @@ import ProductCardStyles from './ProductCard.module.css'
 
 export function ProductCard(props) {
   const {
-    pictures, name, price, wight, stock, id,
+    pictures, name, price, wight, stock, id, discount,
   } = props
 
   const dispatch = useDispatch()
 
   const addToCartHandler = () => {
-    dispatch(addProductCart(id))
+    dispatch(addProductCart({ id, price, discount }))
   }
 
   return (
