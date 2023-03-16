@@ -1,21 +1,14 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { faCircleInfo } from '@fortawesome/free-solid-svg-icons'
-import { addProductCart } from '../../redux/slices/cartSlice'
 import { FavoritesProductsIcon } from './FavoritesProductsIcon'
 import ProductCardStyles from './ProductCard.module.css'
+import { AddToCartButton } from '../../components/AddToCartButton/AddToCartButton'
 
 export function ProductCard(props) {
   const {
     pictures, name, price, wight, stock, id, discount,
   } = props
-
-  const dispatch = useDispatch()
-
-  const addToCartHandler = () => {
-    dispatch(addProductCart({ id, price, discount }))
-  }
 
   return (
     <div className={ProductCardStyles.wr}>
@@ -45,13 +38,7 @@ export function ProductCard(props) {
       </div>
 
       <div className={ProductCardStyles.buttons_wr}>
-
-        <button
-          type="button"
-          onClick={addToCartHandler}
-        >
-          Добавить в корзину
-        </button>
+        <AddToCartButton productId={id} price={price} discount={discount} />
 
         <Link
           className={ProductCardStyles.detail_button}

@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { useQuery } from '@tanstack/react-query'
 import { useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
@@ -8,13 +8,11 @@ import { privateFetch } from '../../utils/privateFetch'
 import { FavoritesProductsIcon } from '../ProductCard/FavoritesProductsIcon'
 import delailStyles from './detailPageProduct.module.css'
 import { Reviews } from './Reviews/Reviews'
-import { addProductCart } from '../../redux/slices/cartSlice'
 import { EditButton } from './EditButton'
+import { AddToCartButton } from '../../components/AddToCartButton/AddToCartButton'
 
 export function DetailPageProduct() {
   const { id } = useParams()
-
-  const dispatch = useDispatch()
 
   const isAuth = useSelector(getAuthStatusSelector)
 
@@ -47,10 +45,6 @@ export function DetailPageProduct() {
   const {
     pictures, name, price, wight, stock, description, discount,
   } = data
-
-  const addToCartHandler = () => {
-    dispatch(addProductCart({ id, price, discount }))
-  }
 
   const sale = String(price - (price / 100) * discount).replace('.', ',')
 
@@ -95,13 +89,7 @@ export function DetailPageProduct() {
       </div>
 
       <div className={delailStyles.buttons_wr}>
-        <button
-          type="button"
-          onClick={addToCartHandler}
-        >
-          Добавить в корзину
-        </button>
-
+        <AddToCartButton productId={id} price={price} discount={discount} />
         <EditButton {...data} />
 
       </div>

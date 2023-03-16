@@ -6,8 +6,8 @@ import classNames from 'classnames'
 import { useQuery } from '@tanstack/react-query'
 import { changeStatusFavourites } from '../../../redux/slices/favoritesSlice'
 import favoriteStyles from './favoriteCard.module.css'
-import { addProductCart } from '../../../redux/slices/cartSlice'
 import { privateFetch } from '../../../utils/privateFetch'
+import { AddToCartButton } from '../../../components/AddToCartButton/AddToCartButton'
 
 export function FavoriteCard({ productId }) {
   const dispatch = useDispatch()
@@ -39,10 +39,6 @@ export function FavoriteCard({ productId }) {
   const {
     pictures, name, price, wight, stock, discount,
   } = data
-
-  const addToCartHandler = () => {
-    dispatch(addProductCart({ id: productId, price, discount }))
-  }
 
   return (
     <div className={favoriteStyles.wr_card}>
@@ -88,12 +84,7 @@ export function FavoriteCard({ productId }) {
           &nbsp;шт.
         </p>
         <div className={favoriteStyles.buttons}>
-          <button
-            type="button"
-            onClick={addToCartHandler}
-          >
-            Добавить в корзину
-          </button>
+          <AddToCartButton productId={productId} price={price} discount={discount} />
         </div>
       </div>
     </div>

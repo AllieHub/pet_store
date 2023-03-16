@@ -21,7 +21,7 @@ const initialValues = {
 export function EditProduct({ data, onCancel }) {
   const { mutate, isLoading } = useMutation({
     mutationFn: (body) => privateFetch(
-      'products',
+      `products/${data._id}`,
       { method: 'PATCH', body: { ...body, _id: data._id } },
     ),
     onSuccess: () => {
