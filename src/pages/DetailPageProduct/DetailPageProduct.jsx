@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 import { useSelector } from 'react-redux'
 import { useQuery } from '@tanstack/react-query'
 import { useEffect } from 'react'
@@ -10,6 +11,7 @@ import delailStyles from './detailPageProduct.module.css'
 import { Reviews } from './Reviews/Reviews'
 import { EditButton } from './EditButton'
 import { AddToCartButton } from '../../components/AddToCartButton/AddToCartButton'
+import { DeleteProductButton } from './DeleteProductButton'
 
 export function DetailPageProduct() {
   const { id } = useParams()
@@ -91,7 +93,7 @@ export function DetailPageProduct() {
       <div className={delailStyles.buttons_wr}>
         <AddToCartButton productId={id} price={price} discount={discount} />
         <EditButton {...data} />
-
+        <DeleteProductButton productId={id} authorId={data.author._id} name={name} />
       </div>
 
       <Reviews productId={id} />

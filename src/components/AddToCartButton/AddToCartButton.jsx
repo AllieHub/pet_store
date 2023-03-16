@@ -1,7 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { addProductCart, getCartSelector } from '../../redux/slices/cartSlice'
-// import Styles from './addToCartButton.module.css'
 
 export function AddToCartButton({ productId, price, discount }) {
   const navigate = useNavigate()

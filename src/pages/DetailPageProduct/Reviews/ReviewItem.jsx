@@ -39,12 +39,12 @@ export function ReviewItem(props) {
       <div className={reviewsStyles.info}>
         <div className={reviewsStyles.created}>
           <h3>Создано:&nbsp;</h3>
-          <p>{created_at}</p>
+          <p>{new Date(created_at).toUTCString()}</p>
         </div>
 
         <div className={reviewsStyles.updated}>
           <h3>Обновлено:&nbsp;</h3>
-          <p>{updated_at}</p>
+          <p>{new Date(updated_at).toUTCString()}</p>
         </div>
       </div>
 
