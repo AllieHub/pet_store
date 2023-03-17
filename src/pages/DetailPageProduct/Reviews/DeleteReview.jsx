@@ -1,37 +1,39 @@
+import { faTrash } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useMutation } from '@tanstack/react-query'
 import { useState } from 'react'
 import { useSelector } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
-import { Modal } from '../../components/Modal/Modal'
-import { Loader } from '../../Loader/Loader'
-import { getUserIdSelector } from '../../redux/slices/authSlice'
-import { privateFetch } from '../../utils/privateFetch'
-import Styles from './detailPageProduct.module.css'
+import { Modal } from '../../../components/Modal/Modal'
+import { Loader } from '../../../Loader/Loader'
+import { getUserIdSelector } from '../../../redux/slices/authSlice'
+import { privateFetch } from '../../../utils/privateFetch'
+import Styles from './reviews.module.css'
 
-export function DeleteProductButton({ productId, authorId, name }) {
+export function DeleteReview({
+  productId, authorId, reviewId, refetch,
+}) {
   const [isOpen, setIsOpen] = useState(false)
 
   const onClose = () => { setIsOpen(false) }
 
   const onOpen = () => { setIsOpen(true) }
 
-  const navigate = useNavigate()
+  const userId = useSelector(getUserIdSelector)
 
   const { mutate, isLoading } = useMutation({
     mutationFn: () => privateFetch(
-      `products/${productId}`,
+      `products/review/${productId}/${reviewId}`,
       { method: 'DELETE' },
     ),
     onSuccess: () => {
+      refetch()
       onClose()
-      navigate('/products')
+    //   доделать обновление отзывов
     },
     onError: (error) => {
       alert(error.message)
     },
   })
-
-  const userId = useSelector(getUserIdSelector)
 
   if (isLoading) {
     return <Loader />
@@ -41,23 +43,16 @@ export function DeleteProductButton({ productId, authorId, name }) {
   if (authorId !== userId) {
     return null
   }
+
   return (
     <>
-      <button type="button" onClick={onOpen}>
-        Удалить товар
-      </button>
+      <FontAwesomeIcon className={Styles.some_icon} icon={faTrash} onClick={onOpen} />
       <Modal isOpen={isOpen} closeHandler={onClose}>
-        <div>
+        <div className={Styles.modal}>
           <p>
-            Вы точно хотите удалить
-            {' '}
-            &quot;
-            {name}
-            &quot;
-            ?
+            Вы точно хотите удалить свой отзыв?
           </p>
-
-          <div className={Styles.buttonsDeleteProduct}>
+          <div className={Styles.modal_buttons}>
             <button type="button" onClick={() => mutate({})}>Да</button>
             <button type="button" onClick={onClose}>Нет</button>
           </div>
@@ -66,6 +61,5 @@ export function DeleteProductButton({ productId, authorId, name }) {
         {/* <EditProduct onCancel={onClose} data={props} /> */}
       </Modal>
     </>
-
   )
 }

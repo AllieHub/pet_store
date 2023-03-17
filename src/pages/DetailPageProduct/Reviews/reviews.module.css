@@ -7,6 +7,7 @@
     padding: 15px;
     flex-wrap: wrap;
     width: 100%;
+    max-width: 90%;
 }
 .wr:last-child {
     margin-bottom: 20px;
@@ -46,10 +47,23 @@
 .info {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
+    margin: 0;
+    padding: 0 0 5px;
+}
+
+.dates {
+    display: flex;
+    flex-direction: row;
     align-items: center;
     justify-content: flex-start;
     margin: 0;
-    padding: 0 0 10px;
+    padding: 0 0 20px;
+}
+
+.details {
+    display: flex;
+    flex-direction: row;
 }
 
 h3 {
@@ -77,4 +91,45 @@ p {
     flex-direction: row; 
     align-items: baseline;
     text-align: left;
+}
+
+.edit {
+    display: flex;
+    flex-direction: row;
+}
+
+.edit svg:first-child {
+    margin-left: 7px;
+}
+
+.edit svg:hover {
+    color: lightcoral;
+}
+
+.some_icon {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    color: darkslateblue;
+}
+
+.modal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 15px 0px 0px;
+}
+
+.modal p {
+    margin: 0;
+}
+
+.modal_buttons {
+    display: flex;
+    flex-direction: row;
+}
+
+#modal-root{
+    display: flex;
+    max-height: 100vh;
 }

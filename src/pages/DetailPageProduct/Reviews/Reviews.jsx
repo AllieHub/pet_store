@@ -29,7 +29,15 @@ export function Reviews({ productId }) {
       <div className={reviewsStyles.reviews_wr}>
         <AddReview productId={productId} refetch={refetch} />
         <h2>Отзывы о товаре</h2>
-        {data.map(({ _id, ...props }) => <ReviewItem key={_id} id={_id} {...props} />)}
+        {data.map(({ _id, ...props }) => (
+          <ReviewItem
+            key={_id}
+            id={_id}
+            {...props}
+            productId={productId}
+            refetch={refetch}
+          />
+        ))}
       </div>
     )
   }

@@ -17,7 +17,6 @@ const initialValues = {
 export function AddReview({ productId, refetch }) {
   const [rating, setRating] = useState(5)
 
-  // eslint-disable-next-line no-unused-vars
   const { mutate, isLoading } = useMutation({
     mutationFn: (body) => privateFetch(
       `products/review/${productId}`,
@@ -32,8 +31,9 @@ export function AddReview({ productId, refetch }) {
     },
   })
 
-  const onSubmitHandler = (value) => {
+  const onSubmitHandler = (value, { resetForm }) => {
     mutate({ ...value, rating })
+    resetForm({ values: '' })
   }
 
   return (
@@ -61,7 +61,6 @@ export function AddReview({ productId, refetch }) {
           </div>
           <div className={addReviewStyles.wr_buttons}>
             <button disabled={isLoading} type="submit">Добавить отзыв</button>
-            {/* <button type="button" onClick={onCancel}>Отмена</button> */}
           </div>
         </Form>
       </Formik>

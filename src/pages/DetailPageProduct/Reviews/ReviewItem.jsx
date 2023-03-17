@@ -1,12 +1,14 @@
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable camelcase */
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 // import { faStar } from '@fortawesome/free-regular-svg-icons'
 import { faStar as faStarSolid } from '@fortawesome/free-solid-svg-icons'
 import reviewsStyles from './reviews.module.css'
+import { DeleteReview } from './DeleteReview'
 
 export function ReviewItem(props) {
   const {
-    author, created_at, rating, text, updated_at,
+    author, created_at, rating, text, updated_at, productId, id, refetch,
   } = props
   // console.log({ props })
 
@@ -24,19 +26,30 @@ export function ReviewItem(props) {
 
       <div className={reviewsStyles.info}>
 
-        <div className={reviewsStyles.author}>
-          <h3>Автор:&nbsp;</h3>
-          <p>{author.name}</p>
+        <div className={reviewsStyles.details}>
+          <div className={reviewsStyles.author}>
+            <h3>Автор:&nbsp;</h3>
+            <p>{author.name}</p>
+          </div>
+
+          <div className={reviewsStyles.raiting}>
+            <h3>Рейтинг:&nbsp;</h3>
+            {ratingStars()}
+          </div>
         </div>
 
-        <div className={reviewsStyles.raiting}>
-          <h3>Рейтинг:&nbsp;</h3>
-          {ratingStars()}
+        <div className={reviewsStyles.edit}>
+          <DeleteReview
+            productId={productId}
+            reviewId={id}
+            authorId={author._id}
+            refetch={refetch}
+          />
         </div>
 
       </div>
 
-      <div className={reviewsStyles.info}>
+      <div className={reviewsStyles.dates}>
         <div className={reviewsStyles.created}>
           <h3>Создано:&nbsp;</h3>
           <p>{new Date(created_at).toUTCString()}</p>

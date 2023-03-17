@@ -47,3 +47,13 @@
     font-size: 18px;
     font-weight: 700;
 }
+
+.buttonsDeleteProduct {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.buttonsDeleteProduct button {
+    margin: 0px 10px 0px;
+}

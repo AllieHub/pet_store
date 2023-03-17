@@ -90,8 +90,11 @@ export function EditProduct({ data, onCancel }) {
             <ErrorMessage component="p" className="error" name="available" />
           </div>
 
-          <button type="submit" disabled={isLoading}>Редактировать товар</button>
-          <button type="button" disabled={isLoading} onClick={onCancel}>Отмена</button>
+          <div className={editProductStyles.buttons}>
+            <button type="button" disabled={isLoading} onClick={onCancel}>Отмена</button>
+            <button type="submit" disabled={isLoading}>Редактировать товар</button>
+          </div>
+
         </Form>
       </Formik>
     </div>
