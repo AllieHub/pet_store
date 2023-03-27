@@ -13,9 +13,12 @@ export const privateFetch = async (url, fetchProps = {}) => {
     body: JSON.stringify(body),
     ...otherProps,
   }).then(async (res) => {
-    if (res.status >= 400) {
+    const { status } = res
+    if (status >= 400) {
       const { message } = await res.json()
-      throw new Error(message || 'Неизвестная ошибка')
+      const error = new Error(message || 'Неизвестная ошибка')
+      error.status = status
+      throw error
     }
     return res.json()
   })

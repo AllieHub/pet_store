@@ -6,12 +6,16 @@ const cartSlice = createSlice({
   initialState: initState.cart,
   reducers: {
     addProductCart(state, action) {
-      const id = action.payload
+      const { id, price, discount } = action.payload
       const product = state.find((el) => el.id === id)
       if (product) {
         product.count += 1
+        product.price = price
+        product.discount = discount
       } else {
-        state.push({ id, count: 1, isChecked: true })
+        state.push({
+          id, count: 1, isChecked: true, price, discount,
+        })
       }
     },
     decrementProductCart(state, action) {
@@ -32,6 +36,9 @@ const cartSlice = createSlice({
     removeAllProductsCart() {
       return []
     },
+    removeSelectedProductsCart(state) {
+      return state.filter((product) => !product.isChecked)
+    },
     changeIsChecked(state, action) {
       const { id, isChecked } = action.payload
       const product = state.find((el) => el.id === id)
@@ -43,12 +50,21 @@ const cartSlice = createSlice({
       const isChecked = action.payload
       state.forEach((el) => { el.isChecked = isChecked })
     },
+    changePriceDicount(state, action) {
+      const { id, price, discount } = action.payload
+      const product = state.find((el) => el.id === id)
+      if (product) {
+        product.count += 1
+        product.price = price
+        product.discount = discount
+      }
+    },
   },
 })
 
 export const {
   addProductCart, decrementProductCart, removeProductCart, removeAllProductsCart, changeIsChecked,
-  changeAllChecked,
+  changeAllChecked, removeSelectedProductsCart, changePriceDicount,
 } = cartSlice.actions
 
 export const getCartSelector = (state) => state.cart

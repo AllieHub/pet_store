@@ -1,0 +1,59 @@
+.wr {
+    display: flex;
+    flex-direction: column;
+}
+
+.wr_items {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    margin: 20px;
+    justify-content: space-around;
+}
+
+.img img {
+    width: 200px;
+    height: 200px;
+}
+
+.wr_description {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.wr_description h3 {
+    padding: 0px 0px 10px;
+    margin: 0;
+}
+
+.wr_description p {
+    font-size: 14px;
+    padding: 0;
+    margin: 0;
+}
+
+.wr_price {
+    color: #8c8c8c;
+    font-size: 12px;
+    font-weight: 400;
+    margin-left: 2px;
+    text-decoration: line-through;
+}
+
+.discount {
+    color: lightcoral;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.buttonsDeleteProduct {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.buttonsDeleteProduct button {
+    margin: 0px 10px 0px;
+}

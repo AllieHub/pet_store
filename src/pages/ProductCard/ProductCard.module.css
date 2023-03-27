@@ -1,5 +1,6 @@
-.Wr {
-    display: grid;
+.wr {
+    display: flex;
+    flex-direction: column;
     align-content: space-between;
     justify-content: space-evenly;
     justify-items: center;
@@ -8,29 +9,81 @@
     border: solid 1px rgba(147, 112, 216, 0.5);;
     border-radius: 5px;
     padding: 5px;
-    /* display: inline-flex;
-    flex-direction: column;
-    width: 33%;
-    background-clip: content-box;
-    gap: 15px; */
 }
-.Wr>* {
-    /* flex: auto; */
+.wr>* {
+    flex: auto;
 }
 
-h3 {
-    font-size: 20px;
-    line-height: normal;
-    /* text-transform: uppercase; */
+h2 {
+    padding: 15px;
     color: rgba(71, 61, 139, 0.8);
+}
+
+.h3 h3 {
+    padding: 15px;
+    font-size: 18px;
+    color: darkslateblue;
 }
 
 p {
     font-size: 18px;
 }
 
-button {
+.detail_button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.detail_button svg {
+    margin: 0px 10px 0;
+    width: 20px;
+    height: 20px;
+}
+
+.buttons_wr a {
+    margin: 0px 0px 20px;
+}
+
+.buttons_wr button {
     letter-spacing: 1px;
     align-content: flex-end;
     font-weight: 600;
+}
+
+.icon {
+    position: relative;
+    /* left: 120px; */
+    box-sizing: border-box;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    fill: currentColor;
+    color: lightcoral;
+    margin: 10px 10px 0px;
+}
+
+.icon:hover {
+    color: rgb(234, 97, 97);
+}
+
+.icon:active {
+    color: rgb(234, 97, 97);
+}
+
+.wr_icon {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.detail_button {
+    color:lightcoral;
+    font-size: 12px;
+    margin-bottom: 20px;
+}
+
+.detail_button p {
+    font-size: 14px;
+    font-weight: 900;
 }

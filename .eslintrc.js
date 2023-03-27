@@ -24,5 +24,7 @@ module.exports = {
     'linebreak-style': 0,
     indent: ['error', 2],
     'no-param-reassign': 0,
+    'jsx-a11y/click-events-have-key-events': 0,
+    'jsx-a11y/no-static-element-interactions': 0,
   },
 }

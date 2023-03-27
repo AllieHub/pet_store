@@ -9,6 +9,7 @@ export const initState = {
   filter: {
     search: '',
   },
+  favorites: [],
 }
 export const getInitState = () => {
   const dataFromLS = window.localStorage.getItem(REDUX_LS_KEY)

@@ -1,0 +1,44 @@
+.wr {
+    display: flex;
+    flex-direction: column;
+}
+.form_addProduct {
+
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+}
+
+.field p {
+    padding: 0;
+    margin: 0;
+    font-size: 14px;
+    font-weight: 700;
+    color: darkslateblue;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: row;
+}
+
+.buttons button {
+    margin: 10px;
+}
+
+.field_available {
+    display: flex;
+    flex-direction: row;
+}
+
+.field_available p {
+    padding: 0;
+    margin: 15px;
+}
+
+.field_available input {
+    padding: 0;
+    margin: 0;
+}

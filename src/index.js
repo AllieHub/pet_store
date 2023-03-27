@@ -12,7 +12,10 @@ import { Products } from './pages/Products/Products'
 import Logout from './pages/Logout/Logout'
 import { store } from './redux/store'
 import { Cart } from './pages/Cart/Cart'
-import { Favorite } from './components/Favorite/Favorite'
+import { Favorites } from './pages/Favorites/Favorites'
+import { User } from './pages/User/User'
+import { AddNewProduct } from './pages/AddProduct/AddNewProduct'
+import { DetailPageProduct } from './pages/DetailPageProduct/DetailPageProduct'
 
 const router = createBrowserRouter([
   {
@@ -25,7 +28,10 @@ const router = createBrowserRouter([
       { path: 'logout', element: <Logout /> },
       { path: 'products', element: <Products /> },
       { path: 'cart', element: <Cart /> },
-      { path: 'favorite', element: <Favorite /> },
+      { path: 'favorites', element: <Favorites /> },
+      { path: 'user', element: <User /> },
+      { path: 'addnewproduct', element: <AddNewProduct /> },
+      { path: 'products/:id', element: <DetailPageProduct /> },
     ],
   },
 ])

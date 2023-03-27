@@ -1,0 +1,18 @@
+.wr_items {
+    margin-top: 15px;
+    display: grid;
+    grid-template-columns: repeat(3, 300px);
+    grid-gap: 15px;
+    margin: 20px;
+    justify-content: center;
+}
+.wr {
+    margin-top: 15px;
+}
+.error {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 25px;
+    font-size: 25px;
+}

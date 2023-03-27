@@ -14,10 +14,18 @@
 }
 
 .link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     color: mediumpurple;
     font-size: 18px;
     font-weight: 600;
     padding: 15px;
+}
+.link img {
+    height: 150px;
+    width: 150px;
+    margin-bottom: 15px;
 }
 a {
     text-decoration: none;
