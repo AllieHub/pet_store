@@ -8,7 +8,7 @@ import { getSearchSelector } from '../../redux/slices/filterSlice'
 import { privateFetch } from '../../utils/privateFetch'
 import { FILTER_QUERY_NAME, getFilteredProducts } from '../Filters/constants'
 import { ProductCard } from '../ProductCard/ProductCard'
-import productsStyles from './productList.module.css'
+import productsStyles from './ProductsList.module.css'
 import { getQueryKey } from './utils'
 
 export function ProductList() {

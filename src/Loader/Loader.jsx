@@ -1,4 +1,4 @@
-import LoaderStyles from './Loader.module.css'
+import LoaderStyles from './Loaders.module.css'
 
 export function Loader() {
   return (
