@@ -1,11 +1,6 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
-// import { useQuery } from '@tanstack/react-query'
 import { useSelector } from 'react-redux'
-// import { useMemo } from 'react'
 import { Link } from 'react-router-dom'
-// import { Loader } from '../../Loader/Loader'
 import { getCartSelector } from '../../redux/slices/cartSlice'
-// import { privateFetch } from '../../utils/privateFetch'
 import { ProductCart } from './ProductCart/ProductCart'
 import cartStyles from './cart.module.css'
 import { SelectAll } from './SelectAll'
@@ -106,9 +101,9 @@ export function Cart() {
     )
   }
   return (
-    <div className="cartStyles.cart_empty">
+    <div className={cartStyles.cart_empty}>
       <h2>Корзина пуста</h2>
-      <div>
+      <div className={cartStyles.cart_empty_buttons}>
         <Link to="/products">
           <button type="button">Продукты</button>
         </Link>

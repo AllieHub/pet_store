@@ -1,5 +1,5 @@
 /* eslint-disable no-underscore-dangle */
-import { useMutation } from '@tanstack/react-query'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
 import {
   ErrorMessage, Field, Form, Formik,
 } from 'formik'
@@ -19,12 +19,14 @@ const initialValues = {
 }
 
 export function EditProduct({ data, onCancel }) {
+  const queryClient = useQueryClient()
   const { mutate, isLoading } = useMutation({
     mutationFn: (body) => privateFetch(
       `products/${data._id}`,
       { method: 'PATCH', body: { ...body, _id: data._id } },
     ),
-    onSuccess: () => {
+    onSuccess: (newDate) => {
+      queryClient.setQueryData([`products/${data._id}`], () => newDate)
       alert('Товар успешно изменен')
       onCancel()
     },

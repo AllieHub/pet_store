@@ -32,12 +32,9 @@ function ModalInner({ closeHandler, children }) {
 }
 
 export function Modal({ isOpen, closeHandler, children }) {
-  console.log({ isOpen, closeHandler })
-
   if (!isOpen) return null
 
   const closeModalByClickWrapper = (e) => {
-    console.log(e)
     if (e.target === e.currentTarget) {
       closeHandler()
     }

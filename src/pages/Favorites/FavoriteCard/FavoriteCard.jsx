@@ -8,6 +8,7 @@ import { changeStatusFavourites } from '../../../redux/slices/favoritesSlice'
 import favoriteStyles from './favoriteCard.module.css'
 import { privateFetch } from '../../../utils/privateFetch'
 import { AddToCartButton } from '../../../components/AddToCartButton/AddToCartButton'
+import { Loader } from '../../../Loader/Loader'
 
 export function FavoriteCard({ productId }) {
   const dispatch = useDispatch()
@@ -29,7 +30,7 @@ export function FavoriteCard({ productId }) {
   })
 
   if (isLoading) {
-    return <div>Идет загрузка</div>
+    return <Loader />
   }
 
   if (isError) {

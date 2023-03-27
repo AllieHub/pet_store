@@ -43,7 +43,6 @@ export function DetailPageProduct() {
     return <div className={delailStyles.error}>{error.message}</div>
   }
 
-  // console.log({ data })
   const {
     pictures, name, price, wight, stock, description, discount,
   } = data

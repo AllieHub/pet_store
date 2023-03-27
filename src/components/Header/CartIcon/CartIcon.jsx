@@ -8,7 +8,6 @@ import { getCartSelector } from '../../../redux/slices/cartSlice'
 
 export function CartIcon() {
   const cart = useSelector(getCartSelector)
-  //   console.log(useSelector(getCartSelector))
 
   return (
     <NavLink

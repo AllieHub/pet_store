@@ -80,6 +80,16 @@
 .cart_empty {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.cart_empty_buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.cart_empty_buttons a {
+    margin-left: 19px;
 }
 .error {
     display: flex;

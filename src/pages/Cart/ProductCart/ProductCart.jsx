@@ -17,6 +17,7 @@ import {
 import productCartStyles from './productCart.module.css'
 import { FavoritesProductsIcon } from '../../ProductCard/FavoritesProductsIcon'
 import { privateFetch } from '../../../utils/privateFetch'
+import { Loader } from '../../../Loader/Loader'
 
 export function ProductCart(props) {
   const {
@@ -64,7 +65,7 @@ export function ProductCart(props) {
   })
 
   if (isLoading) {
-    return <div>Идет загрузка</div>
+    return <Loader />
   }
 
   if (isError) {

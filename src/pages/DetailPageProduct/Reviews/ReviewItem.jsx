@@ -1,7 +1,6 @@
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable camelcase */
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-// import { faStar } from '@fortawesome/free-regular-svg-icons'
 import { faStar as faStarSolid } from '@fortawesome/free-solid-svg-icons'
 import reviewsStyles from './reviews.module.css'
 import { DeleteReview } from './DeleteReview'
@@ -10,7 +9,6 @@ export function ReviewItem(props) {
   const {
     author, created_at, rating, text, updated_at, productId, id, refetch,
   } = props
-  // console.log({ props })
 
   const ratingStars = () => {
     const stars = []
